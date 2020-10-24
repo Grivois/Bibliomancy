@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  4 14:36:31 2019
 
-@author: Grivois
-"""
 
 from kivy.gesture import GestureDatabase
 from kivy.uix.boxlayout import BoxLayout
