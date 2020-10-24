@@ -63,10 +63,4 @@ word = l[0]
 o = Omega()
 print (o.word)
 print (o.web)
-#g = b.divination()
-#p = b.interperter(g[0], g[1])
-#x = b.divination()
-#print(x)
-#print(p)
-#print(web)
-#print(word)
+
