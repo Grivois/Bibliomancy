@@ -1,0 +1,191 @@
+#:kivy 1.0.9
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+
+<ScreenManagement>:
+    transition: FadeTransition()
+    Main_menu:
+    Bibleworkscreen:
+    About:
+    Instructions:
+    Help:
+
+
+<Bibleworkscreen>:
+    label_wid: my_custom_label
+    name: 'Bibleworkscreen'
+    BackGround:
+        id: back_ground
+        source: 'page.png'
+        size: root.width, root.height
+        allow_stretch: True
+        keep_ratio: False
+
+    AnchorLayout:
+        anchor_y: 'center'
+        Label:
+            id: my_custom_label
+            text: root.plot()[0]
+            text_size: root.width-30, None
+            size: self.texture_size
+            halign: 'center'
+            valign: 'middle'
+            font_name: 'JANCIENT.TTF'
+            font_size: 32
+            color:(0, 0, 0, .8)
+        Swiper:
+            on_left_to_right_line: 
+                root.label_wid.text = root.plot()[0]
+
+            on_right_to_left_line:
+                root.label_wid.text = root.plot()[0]
+    AnchorLayout:
+        anchor_y: 'bottom'
+        padding: (0,0,0,30)
+        BoxLayout:
+            size_hint: .6,.08
+            orientation: 'horizontal'
+            Button:
+                text:'Help'
+                font_size: 18
+                font_name: 'JANCIENT.TTF'
+                on_release: root.manager.current = 'Help'
+                background_normal:'button3.png'
+                background_down: 'button4.png'
+                color:(0, 0, 0, .8)
+            Button:
+                text:'Menu'
+                font_size: 18
+                font_name: 'JANCIENT.TTF'
+                on_release: root.manager.current = 'Main_menu'
+                background_normal:'button3.png'
+                background_down: 'button4.png'
+                color:(0, 0, 0, .8)
+            Button:
+                text:'Bible Gateway'
+                font_size: 14
+                text_size: self.width-30, None
+                halign: 'center'
+                font_name: 'JANCIENT.TTF'
+                on_release: 
+                    import webbrowser
+                    webbrowser.open(root.info)
+                background_normal:'button3.png'
+                background_down: 'button4.png'
+                color:(0, 0, 0, .8)
+
+<Main_menu>:
+    name: 'Main_menu'
+    BackGround:
+        id: back_ground
+        source: 'menu.jpg'
+        size: root.width, root.height
+
+    AnchorLayout:
+        anchor_y: 'bottom'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: .5,.2
+            spacing: 10
+            Button:
+                
+                font_name: 'JANCIENT.TTF'
+                text: 'Flip'
+                font_size: 22
+                on_release: print: root.manager.current
+                on_release: root.manager.current = 'Bibleworkscreen'
+                background_normal:'button1.png'
+                background_down: 'button2.png'
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: 20
+                Button:
+                    text: 'About'
+                    font_size: 18
+                    background_normal:'button1.png'
+                    background_down: 'button2.png'
+                    on_release: root.manager.current = 'About'
+                    font_name: 'JANCIENT.TTF'
+                Button:
+                    text: 'Instructions'
+                    font_size: 18
+                    background_normal:'button1.png'
+                    background_down: 'button2.png'
+                    on_release: root.manager.current = 'Instructions'
+                    font_name: 'JANCIENT.TTF'
+
+<About>:
+    name: 'About'
+    BackGround:
+        source:'about.png'
+    AnchorLayout:
+        anchor_y: 'center'
+        Label:
+            text:'     Bibliomancy is a divination practice in which the practicioner randomly selects a passage from a book as a means of revelation. This application allows the practioner to quickly and easily obtain random passages from the King James V Bible. More books may be added in the future.'
+            halign: 'center'
+            valign: 'middle'
+            text_size: root.width-30, None
+            size: self.texture_size
+            font_name: 'JANCIENT.TTF'
+            font_size: 28
+    AnchorLayout:
+        anchor_y: 'bottom'
+        BoxLayout:
+            size_hint: .2,.1
+            Button:
+                text:'Menu'
+                font_size: 18
+                on_release: root.manager.current = 'Main_menu'
+                background_normal:'button1.png'
+                background_down: 'button2.png'
+                font_name: 'JANCIENT.TTF'
+
+<Instructions>:
+    name: 'Instructions'
+    BackGround:
+        source:'instrustions.png'
+    AnchorLayout:
+        anchor_y: 'center'
+        anchor_x: 'center'
+        Label:
+            text:'- Press Flip to obtain a random verse.\n- Swipe left or right to get another verse.\n- Press Menu to return to Main Menu.\n- Press Bible Gateway to to look up the verse on Bible Gateway.'
+            valign: 'middle'
+            text_size: root.width-30, None
+            size: self.texture_size
+            font_name: 'JANCIENT.TTF'
+            font_size: 28
+    AnchorLayout:
+        anchor_y: 'bottom'
+        BoxLayout:
+            size_hint: .2,.1
+            Button:
+                text:'Menu'
+                font_size: 18
+                on_release: root.manager.current = 'Main_menu'
+                font_name: 'JANCIENT.TTF'
+                background_normal:'button1.png'
+                background_down: 'button2.png'
+<Help>:
+    name: 'Help'
+
+    AnchorLayout:
+        anchor_y: 'center'
+        Label:
+            text:'- Flip left or right for a new verse.\n- Press Menu to return to Main Menu.\n- Press Bible Gateway to look up the verse on Bible Gateway.'
+            valign: 'middle'
+            text_size: root.width-30, None
+            size: self.texture_size
+            font_name: 'JANCIENT.TTF'
+            font_size: 28
+
+    AnchorLayout:
+        anchor_y: 'bottom'
+        BoxLayout:
+            size_hint: .2,.1
+            Button:
+                text:'Back'
+                font_size: 18
+                on_release: root.manager.current = 'Bibleworkscreen'
+                font_name: 'JANCIENT.TTF'
+                background_normal:'button1.png'
+                background_down: 'button2.png'
