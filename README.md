@@ -7,5 +7,5 @@ A Buildozer enviornment is required to run this program.
 
 ## Screen Shots
 
-![Image of ScreenShot1](https://github.com/Grivois/Bibliomancy/tree/main/Assets/Screenshot_1.png)  
+![Image of Screenshot_1](https://github.com/Grivois/Bibliomancy/tree/main/Assets/Screenshot_1.png)  
 
